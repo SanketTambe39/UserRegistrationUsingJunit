@@ -2,11 +2,11 @@ package UserRegistrationUsingJunit;
 
 public interface UserValidationService {
 
-	public void checkFirstName(String firstName);
-	public void checkLastName(String lastName);
-	public void checkEmailAddress(String emailAddress);
-	public void checkPhoneNumber(String phoneNumber);
-	public void checkPassword(String password);
+	public boolean checkFirstName(String firstName);
+	public boolean checkLastName(String lastName);
+	public boolean checkEmailAddress(String emailAddress);
+	public boolean checkPhoneNumber(String phoneNumber);
+	public boolean checkPassword(String password);
 	
 
 }

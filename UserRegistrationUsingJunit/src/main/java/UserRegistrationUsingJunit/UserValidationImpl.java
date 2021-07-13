@@ -4,64 +4,42 @@ import java.util.regex.Pattern;
 
 public class UserValidationImpl implements UserValidationService {
 
-	public void checkEmailAddress(String emailAddress) {
-		boolean isMatched = Pattern.compile("^[0-9a-zA-Z]+([.,+,_,-]{1}[0-9a-zA-Z]+)"
-				+ "*@[0-9a-zA-Z]+[.]{1}[a-zA-Z]{2,3}([.]{1}[a-zA-Z]{2})?").matcher(emailAddress).matches();
-		if (isMatched) 
-		{			
-			System.out.println("Email is valid");
-		}
-		else
-		{			
-			System.out.println("Email is invalid");
-		}
-		
+	public boolean checkEmailAddress(String emailAddress) {
+		boolean isMatched = Pattern.compile("^[0-9a-zA-Z]+([.,+,_,-]{1}[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]{1}[a-zA-Z]{2,3}([.]{1}[a-zA-Z]{2})?").matcher(emailAddress).matches();
+		checkValid(isMatched);
+		return isMatched;
 	}
-	public void checkLastName(String lastName) {
-		boolean IsMatched = Pattern.compile("^[A-Z]{1}[a-z]{3,}$").matcher(lastName).matches();
-		if(IsMatched)
-		{
-			System.out.println("Last name is correct");
-		}
-		else 
-		{
-			System.out.println("Larst name is invalid");
-		}
+	public boolean checkLastName(String lastName) {
+		boolean isMatched = Pattern.compile("^[A-Z]{1}[a-z]{3,}$").matcher(lastName).matches();
+		checkValid(isMatched);
+		return isMatched;
 	}
-	public void checkFirstName(String firstName) 
+	public boolean checkFirstName(String firstName) 
 	{
-		boolean IsMatched = Pattern.compile("^[A-Z]{1}[a-z]{3,}$").matcher(firstName).matches();
-		if(IsMatched)
-		{
-			System.out.println("First name is correct");
-		}
-		else 
-		{
-			System.out.println("First name is invalid");
-		}
+		boolean isMatched = Pattern.compile("^[A-Z]{1}[a-z]{3,}$").matcher(firstName).matches();
+		checkValid(isMatched);
+		return isMatched;
 	}
-	public void checkPhoneNumber(String phoneNumber) {
-		boolean IsMatched = Pattern.compile("^[0-9]{2}[ ][0-9]{10}$").matcher(phoneNumber).matches();
-		if(IsMatched)
-		{
-			System.out.println("Phone Number is correct");
-		}
-		else 
-		{
-			System.out.println("Phone number is invalid");
-		}	
+	public boolean checkPhoneNumber(String phoneNumber) {
+		boolean isMatched = Pattern.compile("^[0-9]{2}[ ][0-9]{10}$").matcher(phoneNumber).matches();
+		checkValid(isMatched);
+		return isMatched;
 	}
 	@Override
-	public void checkPassword(String password) {
-	
-		boolean IsMatched = Pattern.compile("[A-Za-z0-9]{8,}").matcher(password).matches();
-		if(IsMatched)
+	public boolean checkPassword(String password) {
+		boolean isMatched = Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#$%^&-+@]).{8,}").matcher(password).matches(); 
+		checkValid(isMatched);
+		return isMatched;
+	}
+	private void checkValid(boolean isMatched) 
+	{
+		if(isMatched)
 		{
-			System.out.println("Password is correct");
+			System.out.println("valid");
 		}
 		else 
 		{
-			System.out.println("Password is invalid");
+			System.out.println("invalid");
 		}
 	}
 }
