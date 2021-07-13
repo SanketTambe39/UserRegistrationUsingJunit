@@ -1,4 +1,4 @@
-package UserRegistrationUsingJunit;
+package userregistrationusingjunit;
 
 public interface UserValidationService {
 

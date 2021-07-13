@@ -1,4 +1,4 @@
-package UserRegistrationUsingJunit;
+package userregistrationusingjunit;
 
 import java.util.regex.Pattern;
 

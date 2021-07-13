@@ -1,11 +1,14 @@
-package UserRegistrationUsingJunit;
+package userregistrationusingjunit;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import userregistrationusingjunit.UserValidationImpl;
+
 public class UserRegistrationTest {
 
 	UserValidationImpl validator = new UserValidationImpl();
+
 	// checking condition for first name
 	@Test
 	public void givenFirstName_WhenProper_ShouldReturnTrue() {
@@ -67,5 +70,36 @@ public class UserRegistrationTest {
 	@Test
 	public void givenEmail_WithoutOptinalDomain_ShouldReturnTrue() {
 		Assert.assertTrue(validator.checkEmailAddress("abc.xyz@bridgelabz.com"));
+	}
+
+	// test cases to Check Password
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue() {
+		Assert.assertTrue(validator.checkPassword("Abacd@12"));
+	}
+
+	@Test
+	public void givenPassword_WhenShort_ShouldReturnFalse() {
+		Assert.assertFalse(validator.checkPassword("Ab@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutUpperCase_ShouldReturnFalse() {
+		Assert.assertFalse(validator.checkPassword("abacd@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutLowerCase_ShouldReturnFalse() {
+		Assert.assertFalse(validator.checkPassword("ABACD@12"));
+	}
+
+	@Test
+	public void givenPassword_WithoutNumeric_ShouldReturnFalse() {
+		Assert.assertFalse(validator.checkPassword("Abacd@aa"));
+	}
+
+	@Test
+	public void givenPassword_WithoutSpecailCharacter_ShouldReturnFalse() {
+		Assert.assertFalse(validator.checkPassword("Abacds12"));
 	}
 }
