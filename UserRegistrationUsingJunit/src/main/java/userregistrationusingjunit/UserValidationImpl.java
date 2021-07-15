@@ -3,7 +3,12 @@ package userregistrationusingjunit;
 import java.util.regex.Pattern;
 
 import userregistrationusingjunit.UserRegitrationException.ExceptionType;
-
+/**
+ * 
+ * @author Sanket
+ * Implementation of Uservalidation interface 
+ * for 
+ */
 public class UserValidationImpl implements UserValidationService {
 	// lambda function to check user entered values
 	ValidationFunction checkValues = (patterns, value) -> Pattern.compile(patterns).matcher(value).matches();
@@ -16,7 +21,7 @@ public class UserValidationImpl implements UserValidationService {
 			String pattern = "^[0-9a-zA-Z]+([.,+,_,-]{1}[0-9a-zA-Z]+)*@[0-9a-zA-Z]+[.]{1}[a-zA-Z]{2,3}([.]{1}[a-zA-Z]{2})?";
 			boolean isMatched = checkValues.validate(pattern, emailAddress);
 			checkValid(isMatched);
-			return isMatched;
+			return isMatched; 
 		} catch (NullPointerException e) {
 			throw new UserRegitrationException(ExceptionType.ENTERED_NULL, "email cannot be empty");
 		}

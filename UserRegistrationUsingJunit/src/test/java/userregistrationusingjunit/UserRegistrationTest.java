@@ -8,7 +8,7 @@ import userregistrationusingjunit.UserValidationImpl;
 
 public class UserRegistrationTest {
 
-	UserValidationImpl validator = new UserValidationImpl();
+	UserValidationImpl validator = new UserValidationImpl(); 
 
 	@Test
 	public void givenFirstName_WhenProper_ShouldReturnTrue() {
