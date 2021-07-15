@@ -19,6 +19,18 @@ public class UserRegistrationTest {
 	public void givenFirstName_WhenShort_ShouldReturnFalse() {
 		Assert.assertFalse(validator.checkFirstName("Ab"));
 	}
+	
+	@Test
+	public void givenFirstName_WhenNumber_ShouldReturnFalse() 
+	{
+		Assert.assertFalse(validator.checkFirstName("a123"));			
+	}
+
+	@Test
+	public void givenFirstName_WhenSpecialCharcters_ShouldReturnFalse() 
+	{
+		Assert.assertFalse(validator.checkFirstName("ab@c"));			
+	}
 
 	@Test
 	public void givenFirstName_WhenFirstNotInUpperCase_ShouldReturnFalse() {
@@ -39,6 +51,18 @@ public class UserRegistrationTest {
 	@Test
 	public void givenLastName_WhenFirstNotInUpperCase_ShouldReturnFalse() {
 		Assert.assertFalse(validator.checkLastName("abcd"));
+	}
+	
+	@Test
+	public void givenLastName_WhenNumber_ShouldReturnFalse() 
+	{
+		Assert.assertFalse(validator.checkLastName("ab12"));			
+	}
+
+	@Test
+	public void givenLastName_WhenSpecialCharacter_ShouldReturnFalse() 
+	{
+		Assert.assertFalse(validator.checkLastName("abcd@"));			
 	}
 
 	// checking conditions for email
